@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Phone, Xmark, MenuScale } from "iconoir-react"; // Importing icons for phone, close, and menu
-import logo from "../../assets/navbar/logobrigade.png"; // Importing Prestige Logo
+import logo from "../../assets/navbar/brigade-logo.png"; // Importing Prestige Logo
 import { Link } from "react-router-dom"; // Importing Link for routing
 import arrow from "/public/icons/arrow-right.svg";
 
@@ -73,7 +73,7 @@ export const Navbar = ({ sitevisitmodal, setSiteVisitModal, setContactModal }) =
           >
             <img
               src={logo}
-              className="h-10 md:h-10"
+              className="h-10 md:h-[50px]"
               alt="Assetz The Hideaway"
             />
           </a>
