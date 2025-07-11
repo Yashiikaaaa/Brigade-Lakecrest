@@ -20,7 +20,7 @@ export const Overview = ({ contactmodal, setContactModal }) => {
               Brigade Lakecrest – Luxury Apartments in KR Puram, Bengaluru
             </p>
             <p className="mt-2">
-              6.9 acre G+28 high‑rise project
+              6 acre, G+28 high‑rise project
             </p>
 
             <ul className="mt-4 text-left list-disc list-inside space-y-1">
