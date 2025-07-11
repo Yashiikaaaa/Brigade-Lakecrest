@@ -17,7 +17,7 @@ export const Overview = ({ contactmodal, setContactModal }) => {
           </h1>
           <div className="max-w-2xl md:text-base text-sm text-black font-body font-light">
             <p className="font-bold text-lg md:text-xl">
-              Assetz Avalon – Luxury Apartments in KR Puram, Bengaluru
+              Brigade Lakecrest – Luxury Apartments in KR Puram, Bengaluru
             </p>
             <p className="mt-2">
               6.9 acre G+28 high‑rise project
