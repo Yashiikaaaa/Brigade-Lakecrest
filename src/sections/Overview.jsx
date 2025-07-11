@@ -25,7 +25,7 @@ export const Overview = ({ contactmodal, setContactModal }) => {
 
             <ul className="mt-4 text-left list-disc list-inside space-y-1">
               
-              <li><strong>1–4 BHK Vastu‑compliant homes</strong></li>
+              <li><strong>1, 2, 2.5, 3 BHK Vastu‑compliant homes</strong></li>
               <li><strong>73 % carpet efficiency</strong></li>
               <li><strong>80 % open space with lake views</strong></li>
               <li><strong>Excellent connectivity: Old Madras Road, KR-Puram station, new metro</strong> </li>  
