@@ -69,13 +69,14 @@ const Pricing = ({ setContactModal, contactmodal, formSubmitted }) => {
 
                 <Button
                   text="Get Pricing"
-                  onClick={() => setContactModal(!contactmodal)
-                  ReactGA.event({
+                 onClick={() => {setContactModal(!contactmodal),
+              ReactGA.event({
                         category: "Form Submission",
                         action: "Get Pricing",
                         label: "Pricing",
                         value: 1,
-                  })}
+                      })
+                  }}
                   className="absolute w-max top-1/2 right-0 transform -translate-y-1/2 px-6 py-3 text-center font-body font-semibold text-sm sm:text-base transition-all duration-300 ease-in-out"
                   showArrow={false}
                 />
