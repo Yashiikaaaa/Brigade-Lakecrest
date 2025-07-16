@@ -1,8 +1,13 @@
 import React from 'react';
 import image from '../assets/gallery/crest2.jpg';
 import Button from '../components/button/buttonMain';
+import ReactGA from "react-ga4";
+const trackingId = import.meta.env.VITE_GA_MEASUREMENT_ID;;
 
+// Initialize Google Analytics
+ReactGA.initialize(trackingId);
 export const Overview = ({ contactmodal, setContactModal }) => {
+
   return (
     <div className="bg-PrestigeGrey">
       <section
@@ -38,7 +43,14 @@ export const Overview = ({ contactmodal, setContactModal }) => {
           <Button
             text="Enquire Now!"
             className="mt-4"
-            onClick={() => setContactModal(!contactmodal)}
+            onClick={() => {setContactModal(!contactmodal),
+              ReactGA.event({
+                        category: "Form Submission",
+                        action: "Enquire Now!",
+                        label: "Overview",
+                        value: 1,
+                      })
+                  }}
           />
         </div>
 

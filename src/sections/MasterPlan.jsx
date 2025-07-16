@@ -27,7 +27,14 @@ export const MasterPlan = ({ setContactModal, contactmodal }) => {
         {/* Get Master Plan Button */}
         <Button
             text="Download Brochure"
-            onClick={() => setContactModal(!contactmodal)}
+            onClick={() => setContactModal(!contactmodal)
+            ReactGA.event({
+                        category: "Form Submission",
+                        action: "Download Brochure",
+                        label: "Master Plan",
+                        value: 1,
+                      })
+                    }
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             showArrow={false} // Arrow will not be displayed
           />
