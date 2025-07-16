@@ -45,7 +45,14 @@ export const Home = ({ contactmodal, setContactModal }) => {
 
           <Button
             text="Enquire Now!"
-            onClick={() => setContactModal(!contactmodal)}
+            onClick={() => {setContactModal(!contactmodal),
+              ReactGA.event({
+                        category: "Form Submission",
+                        action: "Enquire now",
+                        label: "Home",
+                        value: 1,
+                      })
+                  }}
           />
         </div>
 
