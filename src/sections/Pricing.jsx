@@ -74,7 +74,7 @@ const Pricing = ({ setContactModal, contactmodal, formSubmitted }) => {
                         category: "Form Submission",
                         action: "Get Pricing",
                         label: "Pricing",
-                        value: 1,
+                        value: 3,
                       })
                   }}
                   className="absolute w-max top-1/2 right-0 transform -translate-y-1/2 px-6 py-3 text-center font-body font-semibold text-sm sm:text-base transition-all duration-300 ease-in-out"

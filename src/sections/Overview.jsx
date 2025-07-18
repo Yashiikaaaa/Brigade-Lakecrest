@@ -48,7 +48,7 @@ export const Overview = ({ contactmodal, setContactModal }) => {
                         category: "Form Submission",
                         action: "Enquire Now!",
                         label: "Overview",
-                        value: 1,
+                        value: 2,
                       })
                   }}
           />
