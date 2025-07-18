@@ -114,7 +114,7 @@ const ContactForm = ({ contactmodal, setContactModal, setSiteVisitModal }) => {
       name: name.trim().toLowerCase(),
       phoneNumber: number.trim(),
       campaign: true,
-      projectId: "",
+      projectId: "PL29",
       projectName: "Brigade Lakecrest",
       currentAgent: "yasswanth@truestate.in",
       utmDetails: {
@@ -124,6 +124,7 @@ const ContactForm = ({ contactmodal, setContactModal, setSiteVisitModal }) => {
       },
     };
 
+
     try {
       const response = await fetch("https://googleleadsserver.onrender.com/handleMultipleCampaignData", {
         method: "POST",
@@ -131,6 +132,7 @@ const ContactForm = ({ contactmodal, setContactModal, setSiteVisitModal }) => {
         body: JSON.stringify(payload),
       });
 
+      console.log(response,"response");
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
       const result = await response.json();

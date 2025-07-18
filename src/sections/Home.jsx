@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "../components/button/buttonMain";
 import homeLocation from "../assets/home/location.svg";
-
+import ReactGA from "react-ga4"; // Google Analytics 4
 // Array of banner images
 import banner1 from "../assets/gallery/crest1.jpg";
 import banner2 from "../assets/home/2.jpg";
@@ -9,6 +9,13 @@ import banner4 from "../assets/home/1.jpg";
 import banner3 from "../assets/gallery/1.webp";
 
 const banners = [banner1, banner2,banner4];
+
+// Import environment variables
+const trackingId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+
+if (trackingId) {
+  ReactGA.initialize(trackingId);
+}
 
 export const Home = ({ contactmodal, setContactModal }) => {
   const [currentBanner, setCurrentBanner] = useState(0);
