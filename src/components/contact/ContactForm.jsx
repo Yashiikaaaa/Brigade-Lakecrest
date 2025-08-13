@@ -6,6 +6,7 @@ import overlaybg from "../../assets/gallery/14.webp"; // Background image
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { isValidPhoneNumber } from "libphonenumber-js";
+import { useLeadTracking, LEAD_SOURCES } from "../../hooks/useLeadTracking";
 
 // Import environment variables
 const trackingId = import.meta.env.VITE_GA_MEASUREMENT_ID;
@@ -30,7 +31,8 @@ const gtag_report_conversion = (url) => {
   }
 };
 
-const ContactForm = ({ contactmodal, setContactModal, setSiteVisitModal }) => {
+const ContactForm = ({ contactmodal, setContactModal, setSiteVisitModal, leadSource }) => {
+  const { trackFormSubmission } = useLeadTracking();
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [alert, setAlert] = useState(null);
@@ -57,14 +59,6 @@ const ContactForm = ({ contactmodal, setContactModal, setSiteVisitModal }) => {
     const source = params.get("utmSource");
     const medium = params.get("utmMedium");
     const campaign = params.get("utmCampaign");
-
-    ReactGA.send({
-      hitType: "pageview",
-      utmCampaignId: campaignId,
-      utmSource: source,
-      utmMedium: medium,
-      utmCampaign: campaign,
-    });
 
     return {
       utmCampaignId: campaignId || "",
@@ -108,6 +102,12 @@ const ContactForm = ({ contactmodal, setContactModal, setSiteVisitModal }) => {
       return;
     }
 
+    trackFormSubmission(
+      leadSource?.source || LEAD_SOURCES.UNKNOWN,
+      "contact_form",
+      leadSource?.propertyType
+    );
+
     setAlert(<FormAlert message="Submitting form..." onClose={() => setAlert(null)} />);
 
     const payload = {
@@ -143,12 +143,6 @@ const ContactForm = ({ contactmodal, setContactModal, setSiteVisitModal }) => {
 
       setName("");
       setNumber("");
-      ReactGA.event({
-        category: "Form Submission",
-        action: "lead_form_submit",
-        label: "Lead Form",
-        value: 1,
-      });
 
       setAlert(<FormAlert message="We received your info. Expect a response soon!" onClose={() => setAlert(null)} />);
     } catch (error) {

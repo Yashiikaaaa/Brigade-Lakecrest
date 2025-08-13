@@ -6,11 +6,12 @@ import bhk3 from '../assets/gallery/30.jpg';
 import bhk5 from '../assets/gallery/31.jpg';
 import bhk6 from '../assets/gallery/16.webp';
 import bhk4 from '../assets/home/HOME.webp';
+import { useLeadTracking, LEAD_SOURCES, PROPERTY_TYPES } from '../hooks/useLeadTracking';
 
-const Pricing = ({ setContactModal, contactmodal, formSubmitted }) => {
+const Pricing = ({ openContactModal, formSubmitted }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [isUnlocked, setIsUnlocked] = useState(false);
-
+  const { trackButtonClick } = useLeadTracking();
 
   // Unlock pricing when form is submitted
   useEffect(() => {
@@ -25,12 +26,38 @@ const Pricing = ({ setContactModal, contactmodal, formSubmitted }) => {
   };
 
   const propertyTypes = [
-   
-    { type: "1 BHK ", price: "₹ 2.50 Cr ++",  image: bhk3 },
-    { type: "2 BHK", price: "₹ 3.00 Cr ++",  image: bhk2 },
-    { type: "2.5 BHK", price: "₹ 3.25 Cr ++",  image: bhk6 },
-     { type: "3 BHK", price: "₹ 3.25 Cr ++",  image: bhk5 },
-    // { type: "4 BHK Grande", price: "₹ 3.55 Cr ++", size: "2203 Sq.ft.", image: bhk2 },
+    { 
+      type: "1 BHK", 
+      price: "₹ 2.50 Cr ++", 
+      size: "650-750 Sq.ft.", 
+      image: bhk3,
+      leadSource: LEAD_SOURCES.PRICING_1BHK,
+      propertyType: PROPERTY_TYPES.BHK1
+    },
+    { 
+      type: "2 BHK", 
+      price: "₹ 3.00 Cr ++", 
+      size: "900-1200 Sq.ft.", 
+      image: bhk2,
+      leadSource: LEAD_SOURCES.PRICING_2BHK,
+      propertyType: PROPERTY_TYPES.BHK2
+    },
+    { 
+      type: "2.5 BHK", 
+      price: "₹ 3.25 Cr ++", 
+      size: "1200-1400 Sq.ft.", 
+      image: bhk6,
+      leadSource: LEAD_SOURCES.PRICING_2_5BHK,
+      propertyType: PROPERTY_TYPES.BHK2_5
+    },
+    { 
+      type: "3 BHK", 
+      price: "₹ 3.25 Cr ++", 
+      size: "1400-1600 Sq.ft.", 
+      image: bhk5,
+      leadSource: LEAD_SOURCES.PRICING_3BHK,
+      propertyType: PROPERTY_TYPES.BHK3
+    },
   ];
 
   return (
@@ -69,13 +96,9 @@ const Pricing = ({ setContactModal, contactmodal, formSubmitted }) => {
 
                 <Button
                   text="Get Pricing"
-                 onClick={() => {setContactModal(!contactmodal),
-              ReactGA.event({
-                        category: "Form Submission",
-                        action: "Get Pricing",
-                        label: "Pricing",
-                        value: 3,
-                      })
+                  onClick={() => {
+                    trackButtonClick(property.leadSource, 'get_pricing');
+                    openContactModal(property.leadSource, property.propertyType);
                   }}
                   className="absolute w-max top-1/2 right-0 transform -translate-y-1/2 px-6 py-3 text-center font-body font-semibold text-sm sm:text-base transition-all duration-300 ease-in-out"
                   showArrow={false}

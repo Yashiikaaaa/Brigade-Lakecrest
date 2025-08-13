@@ -7,6 +7,7 @@ import banner1 from "../assets/gallery/crest1.jpg";
 import banner2 from "../assets/home/2.jpg";
 import banner4 from "../assets/home/1.jpg";
 import banner3 from "../assets/gallery/1.webp";
+import { useLeadTracking, LEAD_SOURCES } from '../hooks/useLeadTracking';
 
 const banners = [banner1, banner2,banner4];
 
@@ -17,8 +18,9 @@ if (trackingId) {
   ReactGA.initialize(trackingId);
 }
 
-export const Home = ({ contactmodal, setContactModal }) => {
+export const Home = ({ openContactModal }) => {
   const [currentBanner, setCurrentBanner] = useState(0);
+  const { trackButtonClick } = useLeadTracking();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -52,14 +54,13 @@ export const Home = ({ contactmodal, setContactModal }) => {
 
           <Button
             text="Enquire Now!"
-            onClick={() => {setContactModal(!contactmodal),
-              ReactGA.event({
-                        category: "Form Submission",
-                        action: "Enquire now",
-                        label: "Home",
-                        value: 1,
-                      })
-                  }}
+            onClick={() => {
+              trackButtonClick(
+                LEAD_SOURCES.HERO,
+                "enquire_now",
+              );
+              openContactModal(LEAD_SOURCES.HERO);
+            }}
           />
         </div>
 
