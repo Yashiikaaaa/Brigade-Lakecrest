@@ -97,7 +97,7 @@ const Pricing = ({ openContactModal, formSubmitted }) => {
                 <Button
                   text="Get Pricing"
                   onClick={() => {
-                    trackButtonClick(property.leadSource, 'get_pricing');
+                    trackButtonClick(property.leadSource, "get_pricing", property.propertyType);
                     openContactModal(property.leadSource, property.propertyType);
                   }}
                   className="absolute w-max top-1/2 right-0 transform -translate-y-1/2 px-6 py-3 text-center font-body font-semibold text-sm sm:text-base transition-all duration-300 ease-in-out"
